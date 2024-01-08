@@ -7,8 +7,8 @@ max_attemp = 5  # Input maximum password attemps
 for attemp in range(max_attemp + 1):
     # Initialize password requirements
     passwd_reqs = {'digit': 0, 'upper': 0, 'special': 0, 'cons': 0}
-    invalid_passwd_mess = {'digit': 'one number', 'upper': 'one uppercase', 'special':
-        'one special character', 'cons': '3 consecutive numbers'}
+    invalid_passwd_mess = {'digit': 'one number', 'upper': 'one uppercase', 'special': 'one special character',
+                           'cons': 'only 2 consecutive numbers'}
 
     # Set maximum password attemps
     if attemp == max_attemp:
@@ -34,7 +34,7 @@ for attemp in range(max_attemp + 1):
 
     # Check if password contains 3 consecutive numbers
     consecutive_num = re.search(r'\d{3}', passwd)
-    if consecutive_num is not None:
+    if consecutive_num is None:
         passwd_reqs['cons'] += 1
 
     # Validating all conditions
@@ -43,4 +43,4 @@ for attemp in range(max_attemp + 1):
         break
     for req in passwd_reqs.keys():
         if passwd_reqs[req] == 0:
-            print(f'Re-enter password (Invalid password - Password must contains at least {invalid_passwd_mess[req]})')
+            print(f'Re-enter password (Invalid password - Password must contains {invalid_passwd_mess[req]})')
