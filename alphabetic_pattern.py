@@ -42,7 +42,10 @@ def print_pattern(n):
         # Print half-right chars
         upd_char_val = char_val + 2  # Assign a new char_val to print symmetrically with the half-left chars
         for hrc in range(num_of_hl_chars - 1):
-            print(chr(upd_char_val), end = '-')
+            if row == n and hrc == (num_of_hl_chars - 2): # Avoid printing a last dash on a middle row
+                print(chr(upd_char_val), end='')
+            else:
+                print(chr(upd_char_val), end = '-')
             upd_char_val += 1
 
         # Print half-right dashes
